@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assessoria Branderino | Agência de Marketing, Branding & Posicionamento</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <meta name="description" content="Assessoria full-service de marketing com método próprio baseado em psicologia comportamental. Estratégia real para marcas impossíveis de ignorar.">
+  <meta property="og:title" content="Assessoria Branderino - Agência de Marketing, Branding & Posicionamento">
+  <meta property="og:description" content="Assessoria full-service de marketing com método próprio baseado em psicologia comportamental. Estratégia real para marcas impossíveis de ignorar.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="Imagens/web-sections/homescreen-image.png">
+  <meta name="theme-color" content="#1d1d1d">
+  <link rel="icon" type="image/png" href="Imagens/instagram-insights/logo-branderino-insights.png">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&family=Trirong:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+  <style>
+    :root{--bg:#1d1d1d;--ink:#f9f9f9;}
+    html.lenis{height:auto;}
+    .lenis-smooth{scroll-behavior:auto!important;}
+    .lenis-smooth [data-lenis-prevent]{overscroll-behavior:contain;}
+    .lenis-stopped{overflow:hidden;}
+    .lenis-scrolling iframe{pointer-events:none;}
+
+    body{background:#1d1d1d;font-family:'Trirong',serif;color:#f9f9f9;overflow-x:hidden;cursor:default;}
+
+    header{transition:background .4s ease,backdrop-filter .4s ease,padding .4s ease;}
+    header.scrolled{background:rgba(29,29,29,.7);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);padding-top:1rem;padding-bottom:1rem;}
+
+    .nav-link{position:relative;}
+    .nav-link::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:currentColor;transition:width .3s;}
+    .nav-link:hover::after{width:100%;}
+
+    .sec-label{font-family:'Open Sans',sans-serif;font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:#A8A8A8;margin-bottom:12px;display:block;}
+    .reveal{opacity:0;transform:translateY(22px);}
+
+    /* Buttons */
+    .btn-primary{position:relative;overflow:hidden;display:inline-flex;align-items:center;gap:10px;background:#f9f9f9;color:#1d1d1d;padding:16px 36px;font-family:'Trirong',serif;font-size:15px;font-weight:400;text-decoration:none;border:none;transition:all .3s ease;box-shadow:0 0 0 rgba(249,249,249,0);}
+    .btn-primary:hover{opacity:.9;box-shadow:0 10px 30px rgba(249,249,249,0.15);transform:translateY(-2px);}
+    .btn-secondary{position:relative;overflow:hidden;display:inline-flex;align-items:center;gap:10px;background:transparent;color:#f9f9f9;padding:16px 36px;font-family:'Trirong',serif;font-size:15px;font-weight:400;text-decoration:none;border:1px solid rgba(249,249,249,.6);transition:background .3s;}
+    .btn-secondary:hover{background:rgba(249,249,249,.06);}
+    .btn-outline{position:relative;overflow:hidden;display:inline-flex;align-items:center;gap:10px;background:transparent;color:#f9f9f9;padding:13px 32px;font-family:'Trirong',serif;font-size:14px;font-weight:400;text-decoration:none;border:1px solid rgba(249,249,249,.28);transition:border-color .35s,background .35s;}
+    .btn-outline:hover{border-color:#f9f9f9;background:rgba(249,249,249,.08);}
+    .hero-diag-btn{font-family:'Open Sans',sans-serif;font-size:10px;letter-spacing:.2em;font-weight:600;color:rgba(249,249,249,.7);border:1px solid rgba(249,249,249,.2);padding:9px 20px;background:transparent;transition:color .3s,border-color .3s;}
+    .hero-diag-btn:hover{color:#f9f9f9;border-color:rgba(249,249,249,.55);}
+
+    /* Method cards */
+    .method-card{background:rgba(36,36,36,.4);backdrop-filter:blur(8px);padding:32px;border:1px solid rgba(249,249,249,.05);transition:all .4s cubic-bezier(0.23, 1, 0.32, 1);}
+    .method-card:hover{border-color:rgba(249,249,249,.2);background:rgba(36,36,36,.8);transform:translateY(-8px);box-shadow: 0 20px 40px rgba(0,0,0,0.4);}
+
+    /* Specialty blocks */
+    .spec-block{background:#242424;padding:32px;border:1px solid rgba(249,249,249,.07);}
+    .spec-cat-header{font-family:'Open Sans',sans-serif;font-weight:600;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#f9f9f9;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid rgba(249,249,249,.1);}
+    .spec-item{padding:16px 0;border-bottom:1px solid rgba(249,249,249,.05);}
+    .spec-item:last-child{border-bottom:none;padding-bottom:0;}
+    .spec-item-name{font-family:'Open Sans',sans-serif;font-weight:600;font-size:14px;color:#f9f9f9;margin-bottom:5px;}
+    .spec-item-desc{font-family:'Trirong',serif;font-weight:400;font-size:14px;color:#A8A8A8;line-height:1.65;}
+
+    /* Para quem */
+    .pq-card{background:#242424;padding:32px;border:1px solid rgba(249,249,249,.07);}
+    .pq-item{display:flex;align-items:flex-start;gap:14px;margin-bottom:18px;}
+    .pq-item:last-child{margin-bottom:0;}
+    .pq-bullet{width:5px;height:5px;background:#f9f9f9;flex-shrink:0;margin-top:9px;opacity:.45;}
+
+    /* Workflow */
+    .wf-step{padding-left:28px;padding-bottom:44px;position:relative;border-left:1px solid rgba(249,249,249,.09);}
+    .wf-step:last-child{padding-bottom:0;}
+    .wf-step::before{content:'';position:absolute;left:-5px;top:9px;width:9px;height:9px;border-radius:50%;border:1.5px solid rgba(249,249,249,.22);background:#1d1d1d;transition:background .3s,border-color .3s;}
+    .wf-step:hover::before{background:#f9f9f9;border-color:#f9f9f9;}
+
+    /* FAQ */
+    .faq-item{border-bottom:1px solid rgba(249,249,249,.08);cursor:pointer;padding:24px 0;}
+    .faq-question{display:flex;justify-content:space-between;align-items:center;gap:20px;}
+    .faq-plus{font-size:24px;color:rgba(249,249,249,0.3);transition:transform 0.4s ease;}
+    .faq-answer{max-height:0;overflow:hidden;transition:max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;opacity:0;}
+    .faq-item.active .faq-answer{max-height:300px;opacity:1;padding-top:16px;}
+    .faq-item.active .faq-plus{transform:rotate(45deg);color:#f9f9f9;}
+
+    /* Word reveal */
+    .w-span{display:inline-block;opacity:0;transform:translateY(10px);transition:opacity .5s ease,transform .5s ease;}
+    .w-span.shown{opacity:1;transform:translateY(0);}
+
+    /* Cases */
+    .num-block{opacity:0;transform:translateY(18px);}
+
+    /* Marquee */
+    .marquee-container{overflow:hidden;white-space:nowrap;padding:40px 0;background:rgba(29,29,29,.5);}
+    .marquee-content{display:inline-block;animation:marquee 30s linear infinite;}
+    .marquee-item{display:inline-block;margin:0 40px;font-family:'Open Sans',sans-serif;font-weight:600;font-size:11px;letter-spacing:.4em;text-transform:uppercase;color:rgba(249,249,249,.15);}
+    @keyframes marquee{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+
+    /* Client Logos */
+    .client-logo{height:clamp(30px, 4vw, 45px);width:auto;max-width:140px;object-fit:contain;margin:0 45px;filter:grayscale(100%);opacity:.4;transition:all .4s ease;display:inline-block;vertical-align:middle;}
+    .client-logo:hover{filter:grayscale(0);opacity:.9;}
+
+    #cal-booking{width:100%;min-height:680px;}
+    
+    /* Barra de Rolagem Customizada (Webkit) */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #1d1d1d; }
+    ::-webkit-scrollbar-thumb { background: rgba(249,249,249,0.1); border-radius: 10px; }
+    ::-webkit-scrollbar-thumb:hover { background: rgba(249,249,249,0.2); }
+
+    /* Suporte para Firefox */
+    * { scrollbar-width: thin; scrollbar-color: rgba(249,249,249,0.1) #1d1d1d; }
+
+    /* Sidebar Mobile */
+    #sidebarOverlay { position: fixed; inset: 0; background: rgba(0,0,0,0.7); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); z-index: 9998; opacity: 0; pointer-events: none; transition: opacity 0.4s ease; }
+    #sidebarOverlay.active { opacity: 1; pointer-events: auto; }
+    #sidebar { position: fixed; top: 0; right: -100%; width: 80%; max-width: 300px; height: 100%; background: #1d1d1d; z-index: 9999; padding: 100px 40px; border-left: 1px solid rgba(249,249,249,0.1); transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1); display: flex; flex-direction: column; gap: 32px; }
+    #sidebar.active { right: 0; }
+    .sidebar-link { font-family: 'Open Sans', sans-serif; font-size: 14px; letter-spacing: .1em; font-weight: 600; color: #f9f9f9; text-transform: uppercase; text-decoration: none; border-bottom: 1px solid rgba(249,249,249,0.05); padding-bottom: 12px; }
+    
+    .hamburger { display: flex; flex-direction: column; gap: 6px; background: none; border: none; cursor: pointer; padding: 10px; z-index: 9001; }
+    .hamburger span { display: block; width: 24px; height: 1.5px; background: #f9f9f9; transition: all 0.3s ease; }
+
+    #hero { 
+      background-image: url('Imagens/web-sections/homescreen-image-mobile.png'); 
+      background-size: cover; 
+      background-position: center;
+    }
+    @media (min-width: 768px) {
+      #hero { background-image: url('Imagens/web-sections/homescreen-image.png'); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Background text -->
+<div style="position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;">
+  <svg width="100%" height="100%" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <text x="48"   y="130" font-family="Trirong,serif" font-style="italic" font-size="15" fill="#f9f9f9" opacity=".022" transform="rotate(-9,48,130)">brand</text>
+    <text x="1240" y="80"  font-family="Trirong,serif" font-style="italic" font-size="13" fill="#f9f9f9" opacity=".02"  transform="rotate(6,1240,80)">strategy</text>
+    <text x="820"  y="42"  font-family="Trirong,serif" font-style="italic" font-size="17" fill="#f9f9f9" opacity=".018" transform="rotate(-4,820,42)">growth</text>
+    <text x="1340" y="340" font-family="Trirong,serif" font-style="italic" font-size="12" fill="#f9f9f9" opacity=".024" transform="rotate(11,1340,340)">identity</text>
+    <text x="30"   y="480" font-family="Trirong,serif" font-style="italic" font-size="14" fill="#f9f9f9" opacity=".02"  transform="rotate(-6,30,480)">positioning</text>
+    <text x="1180" y="590" font-family="Trirong,serif" font-style="italic" font-size="16" fill="#f9f9f9" opacity=".019" transform="rotate(8,1180,590)">engagement</text>
+    <text x="620"  y="870" font-family="Trirong,serif" font-style="italic" font-size="13" fill="#f9f9f9" opacity=".021" transform="rotate(-5,620,870)">conversion</text>
+    <text x="80"   y="780" font-family="Trirong,serif" font-style="italic" font-size="15" fill="#f9f9f9" opacity=".018" transform="rotate(7,80,780)">analytics</text>
+    <text x="980"  y="160" font-family="Trirong,serif" font-style="italic" font-size="12" fill="#f9f9f9" opacity=".024" transform="rotate(-12,980,160)">content</text>
+    <text x="310"  y="210" font-family="Trirong,serif" font-style="italic" font-size="20" fill="#f9f9f9" opacity=".016" transform="rotate(4,310,210)">ROI</text>
+    <text x="1380" y="730" font-family="Trirong,serif" font-style="italic" font-size="13" fill="#f9f9f9" opacity=".022" transform="rotate(-7,1380,730)">metrics</text>
+    <text x="460"  y="490" font-family="Trirong,serif" font-style="italic" font-size="14" fill="#f9f9f9" opacity=".018" transform="rotate(10,460,490)">audience</text>
+    <text x="750"  y="680" font-family="Trirong,serif" font-style="italic" font-size="11" fill="#f9f9f9" opacity=".024" transform="rotate(-3,750,680)">digital</text>
+    <text x="130"  y="310" font-family="Trirong,serif" font-style="italic" font-size="16" fill="#f9f9f9" opacity=".019" transform="rotate(5,130,310)">storytelling</text>
+    <text x="1060" y="460" font-family="Trirong,serif" font-style="italic" font-size="13" fill="#f9f9f9" opacity=".021" transform="rotate(-9,1060,460)">authority</text>
+    <text x="870"  y="760" font-family="Trirong,serif" font-style="italic" font-size="15" fill="#f9f9f9" opacity=".018" transform="rotate(6,870,760)">awareness</text>
+    <text x="240"  y="640" font-family="Trirong,serif" font-style="italic" font-size="12" fill="#f9f9f9" opacity=".022" transform="rotate(-8,240,640)">funnel</text>
+    <text x="1290" y="190" font-family="Trirong,serif" font-style="italic" font-size="14" fill="#f9f9f9" opacity=".02"  transform="rotate(4,1290,190)">targeting</text>
+    <text x="580"  y="310" font-family="Trirong,serif" font-style="italic" font-size="11" fill="#f9f9f9" opacity=".024" transform="rotate(-6,580,310)">insights</text>
+    <text x="1130" y="840" font-family="Trirong,serif" font-style="italic" font-size="13" fill="#f9f9f9" opacity=".019" transform="rotate(9,1130,840)">branding</text>
+  </svg>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     HERO
+══════════════════════════════════════════ -->
+<section id="hero" class="relative min-h-screen flex flex-col">
+
+  <header id="mainHeader" class="fixed top-0 left-0 right-0 flex justify-between items-center px-6 md:px-10 py-8 transition-all duration-500" style="z-index:9000;">
+    <a href="#hero" class="flex items-center">
+      <img src="Imagens/web-sections/logotipo-branco-branderino.png" alt="Assessoria Branderino" style="height: 32px; width: auto;">
+    </a>
+    <div class="flex items-center gap-2 md:gap-4">
+      <a href="https://api.whatsapp.com/send/?phone=%2B5548991369301&text&type=phone_number&app_absent=0" target="_blank" class="hero-diag-btn hidden md:inline-block" style="text-decoration:none;">Entrar em Contato</a>
+      <button class="hero-diag-btn hidden md:inline-block" data-cal-link="matheuss/60min" data-cal-config='{"layout":"month_view"}'>
+        Agendar Diagnóstico
+      </button>
+      <!-- Mobile Hamburger -->
+      <button class="hamburger md:hidden" onclick="toggleSidebar(true)" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="relative flex-1 w-full" style="z-index:2;">
+    <!-- Canto Inferior Esquerdo -->
+    <div class="absolute bottom-16 left-8 md:left-16 text-left max-w-xl" id="heroBottomLeft" style="opacity:0;transform:translateY(30px);">
+      <h1 style="font-family:'Open Sans',sans-serif;font-weight:700;font-size:clamp(36px,5vw,64px);color:#f9f9f9;line-height:1.1;letter-spacing:-.025em;margin-bottom:32px;" data-key="hero_h1">
+        Eleve sua Marca
+      </h1>
+      <a href="https://api.whatsapp.com/send/?phone=%2B5548991369301&text&type=phone_number&app_absent=0" target="_blank" class="btn-primary">
+        Saiba Mais
+      </a>
+    </div>
+
+    <!-- Meio Lado Direito -->
+    <div class="absolute top-1/2 right-8 md:right-16 -translate-y-1/2 text-right max-w-xs hidden md:block" id="heroMiddleRight" style="opacity:0;transform:translateX(30px);">
+      <p style="font-family:'Trirong',serif;font-weight:400;font-size:14px;color:#f9f9f9;line-height:1.65;text-transform:lowercase;opacity:0.8;" data-key="hero_sub">
+        Assessoria full-service de marketing com método próprio. Toda decisão estratégica, criativa e de mídia parte da análise do comportamento do público, não de tendência.
+      </p>
+    </div>
+  </div>
+  <div class="absolute bottom-0 left-0 right-0 h-16 pointer-events-none" style="background:linear-gradient(to bottom,transparent,#1d1d1d);z-index:2;"></div>
+</section>
+
+
+
+<!-- ══════════════════════════════════════════
+     O MÉTODO
+══════════════════════════════════════════ -->
+<section id="metodo" class="py-32 px-8 md:px-16" style="background:#1d1d1d;position:relative;z-index:1;">
+  <div class="max-w-5xl mx-auto">
+
+    <div class="reveal mb-16">
+      <span class="sec-label">O que nos diferencia</span>
+      <h2 style="font-family:'Open Sans',sans-serif;font-weight:700;font-size:clamp(28px,4vw,48px);color:#f9f9f9;letter-spacing:-.02em;line-height:1.1;margin-bottom:24px;">Psicologia antes de execução</h2>
+      <p style="font-family:'Trirong',serif;font-weight:400;font-size:clamp(15px,1.4vw,18px);color:#A8A8A8;line-height:1.75;max-width:700px;">A maioria das agências começa pela arte, pelo anúncio ou pelo calendário de postagens. A Branderino começa pelo comportamento. A execução vem depois, fundamentada nessa análise.</p>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:2px;">
+
+      <div class="method-card reveal">
+        <p style="font-family:'Open Sans',sans-serif;font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:#A8A8A8;margin-bottom:14px;">PILAR 01</p>
+        <h3 style="font-family:'Open Sans',sans-serif;font-weight:700;font-size:22px;color:#f9f9f9;margin-bottom:14px;letter-spacing:-.01em;">Análise Comportamental</h3>
+        <p style="font-family:'Trirong',serif;font-weight:400;font-size:15px;color:#A8A8A8;line-height:1.75;">Mapeamos motivação, cognição e aprendizagem do público antes de qualquer decisão criativa. Toda mensagem é construída sobre um gatilho psicológico identificado.</p>
+      </div>
+
+      <div class="method-card reveal">
+        <p style="font-family:'Open Sans',sans-serif;font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:#A8A8A8;margin-bottom:14px;">PILAR 02</p>
+        <h3 style="font-family:'Open Sans',sans-serif;font-weight:700;font-size:22px;color:#f9f9f9;margin-bottom:14px;letter-spacing:-.01em;">Arquitetura de Marca</h3>
+        <p style="font-family:'Trirong',serif;font-weight:400;font-size:15px;color:#A8A8A8;line-height:1.75;">Definimos posicionamento, narrativa, pilares de conteúdo e arquitetura visual com base no comportamento do consumidor da marca, não em referência genérica de mercado.</p>
+      </div>
+
+      <div class="method-card reveal">
+        <p style="font-family:'Open Sans',sans-serif;font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:#A8A8A8;margin-bottom:14px;">PILAR 03</p>
+        <h3 style="font-family:'Open Sans',sans-serif;font-weight:700;font-size:22px;color:#f9f9f9;margin-bottom:14px;letter-spacing:-.01em;">Execução Fundamentada</h3>
+        <p style="font-family:'Trirong',serif;font-weight:400;font-size:15px;color:#A8A8A8;line-height:1.75;">Criativos, anúncios, sites e materiais saem da estratégia, não da estética. Cada decisão visual e de copy tem origem em uma hipótese comportamental testável.</p>
+      </div>
+
+      <div class="method-card reveal">
+        <p style="font-family:'Open Sans',sans-serif;font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:#A8A8A8;margin-bottom:14px;">PILAR 04</p>
+        <h3 style="font-family:'Open Sans',sans-serif;font-weight:700;font-size:22px;color:#f9f9f9;margin-bottom:14px;letter-spacing:-.01em;">Mensuração de Percepção</h3>
+        <p style="font-family:'Trirong',serif;font-weight:400;font-size:15px;color:#A8A8A8;line-height:1.75;">Acompanhamos métricas que importam: taxa de conversão, qualidade do lead, percepção de valor da marca. Não vendemos vaidade de seguidores.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ══════════════════════════════════════════
+     WORKFLOW
+══════════════════════════════════════════ -->
+<section id="workflow" class="py-32 px-8 md:px-16" style="background:#1d1d1d;position:relative;z-index:1;">
+  <div class="max-w-5xl mx-auto">
+
+    <div class="reveal mb-16">
+      <span class="sec-label" data-key="wf_label">Como trabalhamos</span>
+      <h2 style="font-family:'Open Sans',sans-serif;font-weight:700;font-size:clamp(26px,3.8vw,44px);color:#f9f9f9;letter-spacing:-.02em;line-height:1.1;" data-key="wf_h2">Do comportamento a execução</h2>
+    </div>
+
+    <div style="padding-left:8px;max-width:660px;">
+
+      <div class="wf-step reveal">
+        <p style="font-family:'Open Sans',sans-serif;font-size:9px;letter-spacing:.14em;color:#A8A8A8;margin-bottom:8px;">01</p>
+        <h4 style="font-family:'Open Sans',sans-serif;font-weight:600;font-size:17px;color:#f9f9f9;margin-bottom:10px;" data-key="s1t">Diagnóstico Estratégico</h4>
+        <p data-word-split data-key="s1d" style="font-family:'Trirong',serif;font-weight:400;font-size:15px;color:#A8A8A8;line-height:1.8;">Mergulhamos na sua marca, no seu mercado e no comportamento do seu público. Mapeamos cenário atual, gargalos reais e oportunidades que ainda não foram exploradas.</p>
+      </div>
+
+      <div class="wf-step reveal">
+        <p style="font-family:'Open Sans',sans-serif;font-size:9px;letter-spacing:.14em;color:#A8A8A8;margin-bottom:8px;">02</p>
+        <h4 style="font-family:'Open Sans',sans-serif;font-weight:600;font-size:17px;color:#f9f9f9;margin-bottom:10px;" data-key="s2t">Plano de Ação Personalizado</h4>
+        <p data-word-split data-key="s2d" style="font-family:'Trirong',serif;font-weight:400;font-size:15px;color:#A8A8A8;line-height:1.8;">A partir do diagnóstico, construímos um plano estratégico que define exatamente onde atuar primeiro para gerar resultado mensurável.</p>
+      </div>
+
+      <div class="wf-step reveal">
+        <p style="font-family:'Open Sans',sans-serif;font-size:9px;letter-spacing:.14em;color:#A8A8A8;margin-bottom:8px;">03</p>
+        <h4 style="font-family:'Open Sans',sans-serif;font-weight:600;font-size:17px;color:#f9f9f9;margin-bottom:10px;" data-key="s3t">Planejamento Detalhado</h4>
+        <p data-word-split data-key="s3d" style="font-family:'Trirong',serif;font-weight:400;font-size:15px;color:#A8A8A8;line-height:1.8;">Antes de qualquer execução, estruturamos todo o planejamento operacional. Calendário, formatos, mensagens, gatilhos comportamentais por peça.</p>
+      </div>
+
+      <div class="wf-step reveal">
+        <p style="font-family:'Open Sans',sans-serif;font-size:9px;letter-spacing:.14em;color:#A8A8A8;margin-bottom:8px;">04</p>
+        <h4 style="font-family:'Open Sans',sans-serif;font-weight:600;font-size:17px;color:#f9f9f9;margin-bottom:10px;" data-key="s4t">Execução com Padrão</h4>
+        <p data-word-split data-key="s4d" style="font-family:'Trirong',serif;font-weight:400;font-size:15px;color:#A8A8A8;line-height:1.8;">Cada entrega é executada com rigor de qualidade, fundamentada na estratégia e alinhada à percepção de marca que estamos construindo.</p>
+      </div>
+
+      <div class="wf-step reveal">
+        <p style="font-family:'Open Sans',sans-serif;font-size:9px;letter-spacing:.14em;color:#A8A8A8;margin-bottom:8px;">05</p>
+        <h4 style="font-family:'Open Sans',sans-serif;font-weight:600;font-size:17px;color:#f9f9f9;margin-bottom:10px;" data-key="s5t">Acompanhamento e Iteração</h4>
+        <p data-word-split data-key="s5d" style="font-family:'Trirong',serif;font-weight:400;font-size:15px;color:#A8A8A8;line-height:1.8;">Marca é construção contínua. Acompanhamos resultado, ajustamos rota, refinamos mensagem. O método se adapta, o padrão se mantém.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     CASES — NÚMEROS
+══════════════════════════════════════════ -->
+<section id="cases" class="py-24 px-8 md:px-16" style="background:#1d1d1d;position:relative;z-index:1;">
+  <div class="max-w-5xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-0">
+      <div class="num-block text-center md:border-r border-white/8 py-10 md:py-0 px-6">
+        <div style="display:flex;align-items:flex-end;justify-content:center;gap:2px;margin-bottom:10px;">
+          <span style="font-family:'Open Sans',sans-serif;font-weight:700;font-size:72px;color:#f9f9f9;line-height:1;">+</span>
+          <span class="counter" data-target="100" style="font-family:'Open Sans',sans-serif;font-weight:700;font-size:72px;color:#f9f9f9;line-height:1;">0</span>
+        </div>
+        <p style="font-family:'Open Sans',sans-serif;font-weight:600;font-size:16px;color:#f9f9f9;margin-bottom:8px;">Projetos entregues</p>
+        <p style="font-family:'Trirong',serif;font-weight:400;font-size:13px;color:#A8A8A8;line-height:1.6;">Empresas e profissionais de diversos segmentos</p>
+      </div>
+      <div class="num-block text-center md:border-r border-white/8 py-10 md:py-0 px-6">
+        <div style="display:flex;align-items:flex-end;justify-content:center;gap:2px;margin-bottom:10px;">
+          <span style="font-family:'Open Sans',sans-serif;font-weight:700;font-size:72px;color:#f9f9f9;line-height:1;">+</span>
+          <span class="counter" data-target="15" style="font-family:'Open Sans',sans-serif;font-weight:700;font-size:72px;color:#f9f9f9;line-height:1;">0</span>
+        </div>
+        <p style="font-family:'Open Sans',sans-serif;font-weight:600;font-size:16px;color:#f9f9f9;margin-bottom:8px;">Anos de experiência</p>
+        <p style="font-family:'Trirong',serif;font-weight:400;font-size:13px;color:#A8A8A8;line-height:1.6;">Construindo metodologia própria desde o primeiro projeto</p>
+      </div>
+      <div class="num-block text-center py-10 md:py-0 px-6">
+        <div style="display:flex;align-items:flex-end;justify-content:center;gap:2px;margin-bottom:10px;">
+          <span style="font-family:'Open Sans',sans-serif;font-weight:700;font-size:72px;color:#f9f9f9;line-height:1;">+</span>
+          <span class="counter" data-target="30" style="font-family:'Open Sans',sans-serif;font-weight:700;font-size:72px;color:#f9f9f9;line-height:1;">0</span>
+        </div>
+        <p style="font-family:'Open Sans',sans-serif;font-weight:600;font-size:16px;color:#f9f9f9;margin-bottom:8px;">Clientes ativos</p>
+        <p style="font-family:'Trirong',serif;font-weight:400;font-size:13px;color:#A8A8A8;line-height:1.6;">São mais de 10 anos atendendo marcas e empresas por todo o Brasil</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     CLIENTES
+══════════════════════════════════════════ -->
+<section id="clientes" class="py-24 px-8 md:px-16" style="background:#1d1d1d;position:relative;z-index:1;">
+  <div class="max-w-5xl mx-auto mb-12 text-center reveal">
+    <span class="sec-label">Confiança</span>
+    <h2 style="font-family:'Open Sans',sans-serif;font-weight:700;font-size:clamp(22px,3vw,36px);color:#f9f9f9;letter-spacing:-.02em;">Alguns clientes satisfeitos</h2>
+  </div>
+  <div class="marquee-container" style="border:none;background:transparent;padding:10px 0;">
+    <div class="marquee-content" style="animation:marquee 50s linear infinite;">
+      <img src="Imagens/clientes-logo/logo-tectronix.png" alt="Tectronix" class="client-logo">
+      <img src="Imagens/clientes-logo/logo-armarinho.png" alt="Armarinho" class="client-logo">
+      <img src="Imagens/clientes-logo/logo-andreia.png" alt="Andreia" class="client-logo">
+      <img src="Imagens/clientes-logo/logo-falaai.png" alt="Fala Ai" class="client-logo">
+      <img src="Imagens/clientes-logo/logo-nexus5.png" alt="Nexus 5" class="client-logo">
+      <img src="Imagens/clientes-logo/logo-axiona.png" alt="Axiona" class="client-logo">
+      <img src="Imagens/clientes-logo/logo-gabi.png" alt="Gabi" class="client-logo">
+      <img src="Imagens/clientes-logo/logo-carvalho.png" alt="Carvalho" class="client-logo">
+      <img src="Imagens/clientes-logo/logo-tectronix.png" alt="Tectronix" class="client-logo">
+      <img src="Imagens/clientes-logo/logo-armarinho.png" alt="Armarinho" class="client-logo">
+      <img src="Imagens/clientes-logo/logo-andreia.png" alt="Andreia" class="client-logo">
+      <img src="Imagens/clientes-logo/logo-falaai.png" alt="Fala Ai" class="client-logo">
+      <img src="Imagens/clientes-logo/logo-nexus5.png" alt="Nexus 5" class="client-logo">
+      <img src="Imagens/clientes-logo/logo-axiona.png" alt="Axiona" class="client-logo">
+      <img src="Imagens/clientes-logo/logo-gabi.png" alt="Gabi" class="client-logo">
+      <img src="Imagens/clientes-logo/logo-carvalho.png" alt="Carvalho" class="client-logo">
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     CASES VISUAIS (GALERIA)
+══════════════════════════════════════════ -->
+<section id="galeria-cases" class="py-32 px-8 md:px-16" style="background:#1d1d1d;position:relative;z-index:1;">
+  <div class="max-w-5xl mx-auto">
+    <div class="reveal mb-16">
+      <span class="sec-label">Portfolio</span>
+      <h2 style="font-family:'Open Sans',sans-serif;font-weight:700;font-size:clamp(26px,3.8vw,44px);color:#f9f9f9;letter-spacing:-.02em;line-height:1.1;">Marcas em Destaque</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+
+      <!-- Card: Loorto -->
+      <div class="reveal group" style="overflow:hidden;">
+        <div style="margin-bottom:24px; overflow:hidden;" class="border border-white/10">
+          <img src="Imagens/behance/capa-loorto.png" alt="Loorto Software" style="width:100%; height:auto; display:block; transition:transform 0.7s cubic-bezier(0.19, 1, 0.22, 1);" class="group-hover:scale-105">
+        </div>
+        <h4 style="font-family:'Open Sans',sans-serif; font-weight:700; font-size:22px; color:#f9f9f9; margin-bottom:8px;">Loorto Software</h4>
+        <p style="font-family:'Trirong',serif; font-size:15px; color:#A8A8A8; margin-bottom:24px;">Branding & Identidade Visual</p>
+        <a href="https://www.behance.net/gallery/250155137/Identidade-Visual-Loorto-Software" target="_blank" class="btn-outline" style="padding:14px 36px;">Ver Projeto</a>
+      </div>
+
+      <!-- Card: Axiona -->
+      <div class="reveal group" style="overflow:hidden;">
+        <div style="margin-bottom:24px; overflow:hidden;" class="border border-white/10">
+          <img src="Imagens/behance/capa-axiona.png" alt="Axiona Solutions" style="width:100%; height:auto; display:block; transition:transform 0.7s cubic-bezier(0.19, 1, 0.22, 1);" class="group-hover:scale-105">
+        </div>
+        <h4 style="font-family:'Open Sans',sans-serif; font-weight:700; font-size:22px; color:#f9f9f9; margin-bottom:8px;">Axiona Solutions</h4>
+        <p style="font-family:'Trirong',serif; font-size:15px; color:#A8A8A8; margin-bottom:24px;">Branding & Identidade Visual</p>
+        <a href="https://www.behance.net/gallery/250155943/Branding-Axiona-AI-Solutions" target="_blank" class="btn-outline" style="padding:14px 36px;">Ver Projeto</a>
+      </div>
+
+      <!-- Card: Fala AI -->
+      <div class="reveal group" style="overflow:hidden;">
+        <div style="margin-bottom:24px; overflow:hidden;" class="border border-white/10">
+          <img src="Imagens/behance/capa-falaai.png" alt="Fala AI" style="width:100%; height:auto; display:block; transition:transform 0.7s cubic-bezier(0.19, 1, 0.22, 1);" class="group-hover:scale-105">
+        </div>
+        <h4 style="font-family:'Open Sans',sans-serif; font-weight:700; font-size:22px; color:#f9f9f9; margin-bottom:8px;">Fala AI</h4>
+        <p style="font-family:'Trirong',serif; font-size:15px; color:#A8A8A8; margin-bottom:24px;">Branding & Identidade Visual</p>
+        <a href="https://www.behance.net/gallery/250155711/Branding-Fala-AI" target="_blank" class="btn-outline" style="padding:14px 36px;">Ver Projeto</a>
+      </div>
+    </div>
+    
+    <!-- Botão Principal Portfólio -->
+    <div class="mt-20 text-center reveal">
+      <a href="https://www.behance.net/assessoriabranderino/projects" target="_blank" class="btn-primary">Acesse nosso Portfólio</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     ESPECIALIDADES
+══════════════════════════════════════════ -->
+<section id="especialidades" class="py-32 px-8 md:px-16" style="background:#1d1d1d;position:relative;z-index:1;">
+  <div class="max-w-5xl mx-auto">
+    <div class="reveal mb-16">
+      <span class="sec-label">O que fazemos</span>
+      <h2 style="font-family:'Open Sans',sans-serif;font-weight:700;font-size:clamp(26px,3.8vw,44px);color:#f9f9f9;letter-spacing:-.02em;line-height:1.1;margin-bottom:16px;">Tudo que sua marca precisa</h2>
+      <p style="font-family:'Trirong',serif;font-weight:400;font-size:clamp(14px,1.3vw,18px);color:#A8A8A8;line-height:1.75;max-width:600px;">Toda especialidade parte da mesma base: comportamento humano. O que muda é o canal, não o rigor.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px" style="background:rgba(249,249,249,.05);">
+
+      <div class="spec-block reveal" style="background:#1d1d1d;">
+        <div style="font-size:28px;margin-bottom:16px;opacity:.7;">↗&#xFE0E;</div>
+        <p class="spec-item-name">Tráfego Pago</p>
+        <p class="spec-item-desc">Meta Ads, Google Ads e estratégias de mídia paga orientadas a conversão e qualidade de lead, não volume de cliques.</p>
+      </div>
+
+      <div class="spec-block reveal" style="background:#1d1d1d;">
+        <div style="font-size:28px;margin-bottom:16px;opacity:.7;">◈&#xFE0E;</div>
+        <p class="spec-item-name">Branding & Identidade Visual</p>
+        <p class="spec-item-desc">Construção de marca do zero ou reposicionamento: propósito, arquétipo, identidade verbal e visual integrados.</p>
+      </div>
+
+      <div class="spec-block reveal" style="background:#1d1d1d;">
+        <div style="font-size:28px;margin-bottom:16px;opacity:.7;">◎&#xFE0E;</div>
+        <p class="spec-item-name">Social Media</p>
+        <p class="spec-item-desc">Gestão estratégica de conteúdo com foco em posicionamento, autoridade e construção de audiência qualificada.</p>
+      </div>
+
+      <div class="spec-block reveal" style="background:#1d1d1d;">
+        <div style="font-size:28px;margin-bottom:16px;opacity:.7;">⬡&#xFE0E;</div>
+        <p class="spec-item-name">Design Gráfico</p>
+        <p class="spec-item-desc">Materiais visuais (apresentações, posts, peças impressas) desenvolvidos para reforçar percepção de valor.</p>
+      </div>
+
+      <div class="spec-block reveal" style="background:#1d1d1d;">
+        <div style="font-size:28px;margin-bottom:16px;opacity:.7;">⌗&#xFE0E;</div>
+        <p class="spec-item-name">Websites</p>
+        <p class="spec-item-desc">Sites modernos, responsivos e centrados em conversão. Do copywriting à entrega final.</p>
+      </div>
+
+      <div class="spec-block reveal" style="background:#1d1d1d;">
+        <div style="font-size:28px;margin-bottom:16px;opacity:.7;">⟳&#xFE0E;</div>
+        <p class="spec-item-name">Automações</p>
+        <p class="spec-item-desc">Fluxos de CRM, e-mail marketing e automações de nutrição de leads para escalar sem perder personalização.</p>
+      </div>
+
+      <div class="spec-block reveal" style="background:#1d1d1d;">
+        <div style="font-size:28px;margin-bottom:16px;opacity:.7;">◻&#xFE0E;</div>
+        <p class="spec-item-name">Planejamento Estratégico</p>
+        <p class="spec-item-desc">Estruturação completa de estratégia de marketing: diagnóstico, mapa de oportunidades e plano de ação por fase.</p>
+      </div>
+
+      <div class="spec-block reveal" style="background:#1d1d1d;">
+        <div style="font-size:28px;margin-bottom:16px;opacity:.7;">◉&#xFE0E;</div>
+        <p class="spec-item-name">Análise de Métricas</p>
+        <p class="spec-item-desc">Monitoramento e interpretação de dados para decisões fundamentadas. Foco em métricas de percepção e retorno real.</p>
+      </div>
+
+      <div class="spec-block reveal" style="background:#1d1d1d;">
+        <div style="font-size:28px;margin-bottom:16px;opacity:.7;">▶&#xFE0E;</div>
+        <p class="spec-item-name">Backstage de Eventos</p>
+        <p class="spec-item-desc">Cobertura estratégica e produção de conteúdo em tempo real para eventos, lançamentos e ativações de marca.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     CEO
+══════════════════════════════════════════ -->
+<section id="ceo" class="py-32 px-8 md:px-16" style="background:#1d1d1d;position:relative;z-index:1;">
+  <div class="max-w-5xl mx-auto">
+    <div class="reveal mb-16">
+      <span class="sec-label">Quem está por trás</span>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+
+      <!-- Foto CEO -->
+      <div class="reveal" style="aspect-ratio:3/4;max-width:420px;border:1px solid rgba(249,249,249,.08);overflow:hidden;background:rgba(255,255,255,.02);position:relative;">
+        <img src="Imagens/web-sections/matheus-image.png" alt="Matheus Alã" style="width:100%; height:100%; object-fit:cover;">
+      </div>
+
+      <!-- Texto -->
+      <div class="reveal">
+        <p style="font-family:'Open Sans',sans-serif;font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:#A8A8A8;margin-bottom:20px;">CEO & Fundador</p>
+        <h2 style="font-family:'Open Sans',sans-serif;font-weight:700;font-size:clamp(28px,3.5vw,44px);color:#f9f9f9;line-height:1.1;letter-spacing:-.02em;margin-bottom:8px;">Matheus Alã</h2>
+        <div style="width:40px;height:1px;background:rgba(249,249,249,.2);margin-bottom:24px;"></div>
+        <p style="font-family:'Trirong',serif;font-weight:400;font-size:clamp(15px,1.4vw,18px);color:#A8A8A8;line-height:1.85;margin-bottom:24px;">5 anos em marketing e especialista em posicionamento digital. Lidera a equipe de marketing da Branderino, conectando branding, growth e performance em estratégias sob medida.</p>
+        <a href="https://www.linkedin.com/in/matheuabreuu/" target="_blank" class="btn-outline" style="margin-bottom:36px;">LinkedIn</a>
+        <blockquote style="border-left:2px solid rgba(249,249,249,.15);padding-left:20px;margin:0;">
+          <p style="font-family:'Trirong',serif;font-style:italic;font-size:clamp(16px,1.5vw,20px);color:rgba(249,249,249,.6);line-height:1.7;">"Marcas não convencem pela lógica. Conquistam pela percepção."</p>
+        </blockquote>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     AGENDAMENTO
+══════════════════════════════════════════ -->
+<section id="agendamento" class="py-24 px-8 md:px-16" style="background:#1d1d1d;position:relative;z-index:1;">
+  <div class="max-w-5xl mx-auto">
+    <div class="reveal mb-10">
+      <span class="sec-label">Próximo passo</span>
+      <h2 style="font-family:'Open Sans',sans-serif;font-weight:700;font-size:clamp(24px,3.5vw,40px);color:#f9f9f9;letter-spacing:-.02em;line-height:1.1;margin-bottom:14px;">Agende uma conversa de diagnóstico</h2>
+      <p style="font-family:'Trirong',serif;font-weight:400;font-size:15px;color:#A8A8A8;line-height:1.85;max-width:520px;">30 minutos de conversa estratégica para entender se a Branderino é o caminho certo para sua marca. Sem custo, sem compromisso.</p>
+    </div>
+    <div class="reveal" style="border:1px solid rgba(249,249,249,.08);overflow:hidden;">
+      <div id="cal-booking" style="width:100%;min-height:680px;background:#1d1d1d;"></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     INSIGHTS (INSTAGRAM)
+══════════════════════════════════════════ -->
+<section id="insights" class="py-32 px-8 md:px-16" style="background:#1d1d1d;position:relative;z-index:1;">
+  <div class="max-w-6xl mx-auto">
+    <div class="reveal mb-16">
+      <span class="sec-label">Autoridade</span>
+      <h2 style="font-family:'Open Sans',sans-serif;font-weight:700;font-size:clamp(26px,3.8vw,44px);color:#f9f9f9;letter-spacing:-.02em;line-height:1.1;">Insights Estratégicos</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="reveal bg-[#1d1d1d] border border-white/10 overflow-hidden">
+        <div class="flex items-center gap-3 p-3">
+          <img src="Imagens/instagram-insights/logo-branderino-insights.png" class="w-8 h-8 rounded-full" alt="Logo">
+          <span class="text-[12px] font-semibold text-white">assessoriabranderino</span>
+          <svg viewBox="0 0 24 24" class="w-3 h-3 fill-[#3897f0]"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm5.1 8.3l-5.6 5.6c-.2.2-.5.3-.7.3s-.5-.1-.7-.3l-2.6-2.6c-.4-.4-.4-1 0-1.4s1-.4 1.4 0l1.9 1.9 4.9-4.9c.4-.4 1-.4 1.4 0s.4 1 0 1.4z"/></svg>
+        </div>
+        <img src="Imagens/instagram-insights/post1.png" class="w-full h-auto block" alt="Insight 1">
+        <div class="flex items-center justify-between p-3 border-t border-white/5">
+          <div class="flex items-center gap-4">
+<!--  -->            <svg aria-label="Like" height="20" role="img" viewBox="0 0 24 24" width="20" class="fill-none stroke-white/80 hover:stroke-white transition-colors cursor-pointer" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+            <svg aria-label="Comment" height="20" role="img" viewBox="0 0 24 24" width="20" class="fill-none stroke-white/80 hover:stroke-white transition-colors cursor-pointer" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.656 17.008a9.993 9.993 0 1 0-3.59 3.615L22 22Z"></path></svg>
+            <svg aria-label="Share" height="20" role="img" viewBox="0 0 24 24" width="20" class="fill-none stroke-white/80 hover:stroke-white transition-colors cursor-pointer" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" x2="9.218" y1="3" y2="10.083"></line><polygon points="11.698 20.334 22 3.001 2 3.001 9.218 10.084 11.698 20.334"></polygon></svg>
+          </div>
+          <svg aria-label="Save" height="20" role="img" viewBox="0 0 24 24" width="20" class="fill-none stroke-white/80 hover:stroke-white transition-colors cursor-pointer" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="20 21 12 13.44 4 21 4 3 20 3 20 21"></polygon></svg>
+        </div>
+      </div>
+      <div class="reveal bg-[#1d1d1d] border border-white/10 overflow-hidden" style="transition-delay:0.1s;">
+        <div class="flex items-center gap-3 p-3">
+          <img src="Imagens/instagram-insights/logo-branderino-insights.png" class="w-8 h-8 rounded-full" alt="Logo">
+          <span class="text-[12px] font-semibold text-white">assessoriabranderino</span>
+          <svg viewBox="0 0 24 24" class="w-3 h-3 fill-[#3897f0]"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm5.1 8.3l-5.6 5.6c-.2.2-.5.3-.7.3s-.5-.1-.7-.3l-2.6-2.6c-.4-.4-.4-1 0-1.4s1-.4 1.4 0l1.9 1.9 4.9-4.9c.4-.4 1-.4 1.4 0s.4 1 0 1.4z"/></svg>
+        </div>
+        <img src="Imagens/instagram-insights/post2.png" class="w-full h-auto block" alt="Insight 2">
+        <div class="flex items-center justify-between p-3 border-t border-white/5">
+          <div class="flex items-center gap-4">
+            <svg aria-label="Like" height="20" role="img" viewBox="0 0 24 24" width="20" class="fill-none stroke-white/80 hover:stroke-white transition-colors cursor-pointer" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+            <svg aria-label="Comment" height="20" role="img" viewBox="0 0 24 24" width="20" class="fill-none stroke-white/80 hover:stroke-white transition-colors cursor-pointer" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.656 17.008a9.993 9.993 0 1 0-3.59 3.615L22 22Z"></path></svg>
+            <svg aria-label="Share" height="20" role="img" viewBox="0 0 24 24" width="20" class="fill-none stroke-white/80 hover:stroke-white transition-colors cursor-pointer" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" x2="9.218" y1="3" y2="10.083"></line><polygon points="11.698 20.334 22 3.001 2 3.001 9.218 10.084 11.698 20.334"></polygon></svg>
+          </div>
+          <svg aria-label="Save" height="20" role="img" viewBox="0 0 24 24" width="20" class="fill-none stroke-white/80 hover:stroke-white transition-colors cursor-pointer" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="20 21 12 13.44 4 21 4 3 20 3 20 21"></polygon></svg>
+        </div>
+      </div>
+      <div class="reveal bg-[#1d1d1d] border border-white/10 overflow-hidden" style="transition-delay:0.2s;">
+        <div class="flex items-center gap-3 p-3">
+          <img src="Imagens/instagram-insights/logo-branderino-insights.png" class="w-8 h-8 rounded-full" alt="Logo">
+          <span class="text-[12px] font-semibold text-white">assessoriabranderino</span>
+          <svg viewBox="0 0 24 24" class="w-3 h-3 fill-[#3897f0]"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm5.1 8.3l-5.6 5.6c-.2.2-.5.3-.7.3s-.5-.1-.7-.3l-2.6-2.6c-.4-.4-.4-1 0-1.4s1-.4 1.4 0l1.9 1.9 4.9-4.9c.4-.4 1-.4 1.4 0s.4 1 0 1.4z"/></svg>
+        </div>
+        <img src="Imagens/instagram-insights/post3.png" class="w-full h-auto block" alt="Insight 3">
+        <div class="flex items-center justify-between p-3 border-t border-white/5">
+          <div class="flex items-center gap-4">
+            <svg aria-label="Like" height="20" role="img" viewBox="0 0 24 24" width="20" class="fill-none stroke-white/80 hover:stroke-white transition-colors cursor-pointer" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+            <svg aria-label="Comment" height="20" role="img" viewBox="0 0 24 24" width="20" class="fill-none stroke-white/80 hover:stroke-white transition-colors cursor-pointer" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.656 17.008a9.993 9.993 0 1 0-3.59 3.615L22 22Z"></path></svg>
+            <svg aria-label="Share" height="20" role="img" viewBox="0 0 24 24" width="20" class="fill-none stroke-white/80 hover:stroke-white transition-colors cursor-pointer" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" x2="9.218" y1="3" y2="10.083"></line><polygon points="11.698 20.334 22 3.001 2 3.001 9.218 10.084 11.698 20.334"></polygon></svg>
+          </div>
+          <svg aria-label="Save" height="20" role="img" viewBox="0 0 24 24" width="20" class="fill-none stroke-white/80 hover:stroke-white transition-colors cursor-pointer" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="20 21 12 13.44 4 21 4 3 20 3 20 21"></polygon></svg>
+        </div>
+      </div>
+    </div>
+    <div class="mt-16 text-center reveal">
+      <a href="https://www.instagram.com/assessoriabranderino" target="_blank" class="btn-outline">Ver todos os insights no Instagram</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     FAQ
+══════════════════════════════════════════ -->
+<section id="faq" class="py-32 px-8 md:px-16" style="background:#1d1d1d;position:relative;z-index:1;">
+  <div class="max-w-3xl mx-auto">
+    <div class="reveal mb-16 text-center">
+      <span class="sec-label">FAQ</span>
+      <h2 style="font-family:'Open Sans',sans-serif;font-weight:700;font-size:clamp(26px,3.8vw,44px);color:#f9f9f9;letter-spacing:-.02em;">Perguntas Frequentes</h2>
+    </div>
+    <div class="reveal">
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-question"><span style="font-family:'Open Sans',sans-serif;font-weight:600;">Em quanto tempo vejo resultados estratégicos?</span><span class="faq-plus">+</span></div>
+        <div class="faq-answer"><p style="font-family:'Trirong',serif;color:#A8A8A8;">Resultados de percepção de marca começam imediatamente após a implementação. Resultados financeiros sólidos costumam se consolidar entre 3 a 6 meses de trabalho contínuo.</p></div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-question"><span style="font-family:'Open Sans',sans-serif;font-weight:600;">A Branderino atende qualquer tipo de empresa?</span><span class="faq-plus">+</span></div>
+        <div class="faq-answer"><p style="font-family:'Trirong',serif;color:#A8A8A8;">Atendemos empresas que buscam autoridade. Se você compete apenas por preço e busca o marketing mais barato do mercado, não somos o parceiro ideal.</p></div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-question"><span style="font-family:'Open Sans',sans-serif;font-weight:600;">O que está incluso no diagnóstico gratuito?</span><span class="faq-plus">+</span></div>
+        <div class="faq-answer"><p style="font-family:'Trirong',serif;color:#A8A8A8;">Uma análise de 30 minutos sobre seus gargalos atuais de marca e um direcionamento claro do que precisa ser corrigido primeiro.</p></div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-question"><span style="font-family:'Open Sans',sans-serif;font-weight:600;">Preciso já ter uma equipe de marketing interna?</span><span class="faq-plus">+</span></div>
+        <div class="faq-answer"><p style="font-family:'Trirong',serif;color:#A8A8A8;">Não. Atuamos tanto como seu braço de estratégia e execução total quanto como consultoria para sua equipe interna.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════ -->
+<footer id="footer" style="background:#161616;position:relative;z-index:1;">
+  <div class="max-w-5xl mx-auto px-8 md:px-16 py-20">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
+
+      <!-- Logo + tagline -->
+      <div>
+        <img src="Imagens/web-sections/logotipo-branco-branderino.png" alt="Assessoria Branderino" style="height:28px;width:auto;margin-bottom:20px;opacity:.9;">
+        <p style="font-family:'Open Sans',sans-serif;font-size:13px;color:rgba(249,249,249,.55);line-height:2;margin:0;">contato@branderino.com.br</p>
+        <p style="font-family:'Open Sans',sans-serif;font-size:13px;color:rgba(249,249,249,.55);line-height:2;margin:0;">+55 (48) 9 9136-9301</p>
+      </div>
+
+      <!-- Links -->
+      <div>
+        <p style="font-family:'Open Sans',sans-serif;font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:#A8A8A8;margin-bottom:20px;">Navegação</p>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <a href="#metodo" class="nav-link" style="font-family:'Open Sans',sans-serif;font-size:13px;color:rgba(249,249,249,.55);text-decoration:none;">O Método</a>
+          <a href="#especialidades" class="nav-link" style="font-family:'Open Sans',sans-serif;font-size:13px;color:rgba(249,249,249,.55);text-decoration:none;">Especialidades</a>
+          <a href="#galeria-cases" class="nav-link" style="font-family:'Open Sans',sans-serif;font-size:13px;color:rgba(249,249,249,.55);text-decoration:none;">Projetos</a>
+          <a href="#faq" class="nav-link" style="font-family:'Open Sans',sans-serif;font-size:13px;color:rgba(249,249,249,.55);text-decoration:none;">FAQ</a>
+          <a href="#agendamento" class="nav-link" style="font-family:'Open Sans',sans-serif;font-size:13px;color:rgba(249,249,249,.55);text-decoration:none;">Agendar Diagnóstico</a>
+        </div>
+      </div>
+
+      <!-- Redes + contato -->
+      <div>
+        <p style="font-family:'Open Sans',sans-serif;font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:#A8A8A8;margin-bottom:20px;">Redes Sociais</p>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <a href="https://www.instagram.com/assessoriabranderino" target="_blank" class="nav-link" style="font-family:'Open Sans',sans-serif;font-size:13px;color:rgba(249,249,249,.55);text-decoration:none;">Instagram</a>
+          <a href="https://www.linkedin.com/company/assessoriabranderino/?viewAsMember=true" target="_blank" class="nav-link" style="font-family:'Open Sans',sans-serif;font-size:13px;color:rgba(249,249,249,.55);text-decoration:none;">LinkedIn</a>
+          <a href="https://www.behance.net/assessoriabranderino" target="_blank" class="nav-link" style="font-family:'Open Sans',sans-serif;font-size:13px;color:rgba(249,249,249,.55);text-decoration:none;">Behance</a>
+          <a href="https://api.whatsapp.com/send/?phone=%2B5548991369301&text&type=phone_number&app_absent=0" target="_blank" class="nav-link" style="font-family:'Open Sans',sans-serif;font-size:13px;color:rgba(249,249,249,.55);text-decoration:none;">WhatsApp</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+      <p data-key="ft_copy" style="font-family:'Open Sans',sans-serif;font-size:9px;color:rgba(249,249,249,.2);letter-spacing:.1em;">© 2026 Assessoria Branderino. Todos os direitos reservados.</p>
+      <a href="#hero" style="font-family:'Open Sans',sans-serif;font-size:9px;letter-spacing:.2em;color:rgba(249,249,249,.2);text-decoration:none;text-transform:uppercase;">↑ Topo</a>
+    </div>
+  </div>
+</footer>
+
+
+<!-- Mobile Sidebar -->
+<div id="sidebarOverlay" onclick="toggleSidebar(false)"></div>
+<div id="sidebar">
+  <button onclick="toggleSidebar(false)" style="position:absolute;top:28px;right:28px;background:none;border:none;color:#f9f9f9;font-size:22px;cursor:pointer;opacity:.6;line-height:1;" aria-label="Fechar">&#xd7;</button>
+  <button class="sidebar-link" data-cal-link="matheuss/60min" data-cal-config='{"layout":"month_view"}' style="background:none;border:none;text-align:left;cursor:pointer;padding-bottom:12px;">Agendar Diagnóstico</button>
+  <a href="https://api.whatsapp.com/send/?phone=%2B5548991369301&text&type=phone_number&app_absent=0" target="_blank" class="sidebar-link" onclick="toggleSidebar(false)">Entrar em Contato</a>
+  <a href="#metodo" class="sidebar-link" onclick="toggleSidebar(false)">O Método</a>
+  <a href="#especialidades" class="sidebar-link" onclick="toggleSidebar(false)">Especialidades</a>
+  <a href="#galeria-cases" class="sidebar-link" onclick="toggleSidebar(false)">Projetos</a>
+  <a href="#faq" class="sidebar-link" onclick="toggleSidebar(false)">FAQ</a>
+</div>
+
+<!-- Project Gallery Modal -->
+<div id="projectModal" class="hidden" data-lenis-prevent style="position:fixed;inset:0;z-index:9500;background:#1d1d1d;overflow-y:auto;opacity:0;">
+  <div style="max-width:960px;margin:0 auto;padding:48px 32px 80px;">
+
+    <!-- Topo: título + fechar -->
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:48px;">
+      <div>
+        <span id="projectCategory" style="font-family:'Open Sans',sans-serif;font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:#A8A8A8;display:block;margin-bottom:14px;"></span>
+        <h2 id="projectTitle" style="font-family:'Open Sans',sans-serif;font-weight:700;font-size:clamp(24px,3.5vw,38px);color:#f9f9f9;letter-spacing:-.02em;line-height:1.1;margin:0;"></h2>
+      </div>
+      <button onclick="closeProjectModal()" style="background:none;border:1px solid rgba(249,249,249,.22);width:44px;height:44px;color:#f9f9f9;font-size:22px;display:flex;align-items:center;justify-content:center;transition:border-color .3s;cursor:pointer;flex-shrink:0;margin-left:32px;" onmouseenter="this.style.borderColor='rgba(249,249,249,.6)'" onmouseleave="this.style.borderColor='rgba(249,249,249,.22)'">&#xd7;</button>
+    </div>
+
+    <!-- Descrição -->
+    <div id="projectDesc" style="max-width:620px;margin-bottom:64px;"></div>
+
+    <!-- Imagens -->
+    <div id="projectImagesContainer"></div>
+  </div>
+
+  <!-- Botão Ir ao Topo -->
+  <button onclick="document.getElementById('projectModal').scrollTo({top:0,behavior:'smooth'})" style="position:fixed;bottom:32px;right:32px;font-family:'Open Sans',sans-serif;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(249,249,249,.7);background:rgba(29,29,29,.9);border:1px solid rgba(249,249,249,.22);padding:12px 20px;cursor:pointer;transition:color .3s,border-color .3s;z-index:10;" onmouseenter="this.style.color='#f9f9f9';this.style.borderColor='rgba(249,249,249,.6)'" onmouseleave="this.style.color='rgba(249,249,249,.7)';this.style.borderColor='rgba(249,249,249,.22)'">Ir ao topo</button>
+</div>
+
+<!-- Cal.com -->
+<script type="text/javascript">
+(function(C,A,L){let p=function(a,ar){a.q.push(ar)};let d=C.document;C.Cal=C.Cal||function(){let cal=C.Cal,ar=arguments;if(!cal.loaded){cal.ns={};cal.q=cal.q||[];d.head.appendChild(d.createElement("script")).src=A;cal.loaded=true;}if(ar[0]===L){const api=function(){p(api,arguments)};const ns=ar[1];api.q=api.q||[];typeof ns==="string"?(cal.ns[ns]=api)&&p(api,ar):p(cal,ar);return;}p(cal,ar);};})(window,"https://app.cal.com/embed/embed.js","init");
+Cal("init",{origin:"https://cal.com"});
+Cal("inline",{elementOrSelector:"#cal-booking",calLink:"matheuss/60min",layout:"month_view"});
+Cal("ui",{theme:"dark",styles:{branding:{brandColor:"#f9f9f9"}},hideEventTypeDetails:false,layout:"month_view"});
+</script>
+
+<script>
+(function(){
+'use strict';
+
+/* ── Lenis Smooth Scroll ── */
+const lenis = new Lenis();
+lenis.on('scroll', ScrollTrigger.update);
+gsap.ticker.add((time) => { lenis.raf(time * 1000); });
+gsap.ticker.lagSmoothing(0);
+
+/* ── Smooth scroll for anchors ── */
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    lenis.scrollTo(this.getAttribute('href'));
+  });
+});
+
+const T_removed = {
+  pt: {
+    hero_h1: 'placeholder',
+    hero_sub: 'Assessoria full-service de marketing com método próprio. Toda decisão estratégica, criativa e de mídia parte da análise do comportamento do público, não de tendência.',
+    hero_cta_primary: 'Fazer diagnóstico gratuito',
+    hero_cta_secondary: 'Conhecer o método',
+    qs_label: 'Manifesto',
+    qs_imp1: 'O mercado não precisa de mais marcas.',
+    qs_imp2: 'Precisa de marcas impossíveis de ignorar.',
+    qs_prob1: 'Muitas empresas investem em marketing.',
+    qs_prob2: 'Poucas constroem autoridade.',
+    qs_vision1: 'Empresas não precisam apenas aparecer.',
+    qs_vision2: 'Precisam ocupar espaço na mente das pessoas.',
+    met_label: 'O que nos diferencia',
+    met_h2: 'Psicologia antes de execução',
+    met_intro: 'A maioria das agências começa pela arte, pelo anúncio ou pelo calendário de postagens. A Branderino começa pelo comportamento. Antes de qualquer entrega, mapeamos os gatilhos psicológicos que movem a decisão de compra do público específico daquela marca. A execução vem depois, fundamentada nessa análise.',
+    p1_label: 'PILAR 01', p1_title: 'Análise Comportamental',
+    p1_desc: 'Mapeamos motivação, cognição e aprendizagem do público antes de qualquer decisão criativa. Toda mensagem é construída sobre um gatilho psicológico identificado.',
+    p2_label: 'PILAR 02', p2_title: 'Arquitetura de Marca',
+    p2_desc: 'Definimos posicionamento, narrativa, pilares de conteúdo e arquitetura visual com base no comportamento do consumidor da marca, não em referência genérica de mercado.',
+    p3_label: 'PILAR 03', p3_title: 'Execução Fundamentada',
+    p3_desc: 'Criativos, anúncios, sites e materiais saem da estratégia, não da estética. Cada decisão visual e de copy tem origem em uma hipótese comportamental testável.',
+    p4_label: 'PILAR 04', p4_title: 'Mensuração de Percepção',
+    p4_desc: 'Acompanhamos métricas que importam: taxa de conversão, qualidade do lead, percepção de valor da marca. Não vendemos vaidade de seguidores.',
+    esp_label: 'Especialidades',
+    esp_h2: 'Tudo que sua marca precisa',
+    esp_sub: 'Toda especialidade passa pela mesma base metodológica. O que muda é o canal de entrega, não a forma de pensar o problema.',
+    esp_cat1: 'ESTRATÉGIA', esp_cat2: 'CRIAÇÃO', esp_cat3: 'PERFORMANCE',
+    e1t: 'Branding e Rebranding', e2t: 'Identidade Visual', e3t: 'Gestão de Anúncios', e4t: 'Automações',
+    e5t: 'Social Media', e6t: 'Análise de Métricas', e7t: 'Websites', e8t: 'Design Gráfico',
+    e9t: 'Backstage de Eventos', e10t: 'Branding e Rebranding', e10t_plan: 'Planejamento Estratégico',
+    e1d: 'Construção e reposicionamento de marcas com base em percepção de valor e autoridade.',
+    e2d: 'Desenvolvimento de identidades autênticas, estratégicas e alinhadas ao posicionamento.',
+    e3d: 'Estratégias de tráfego pago voltadas para alcance e conversão.',
+    e4d: 'Implementação de processos automatizados para eficiência e escala.',
+    e5d: 'Gestão estratégica com foco em posicionamento e autoridade digital.',
+    e6d: 'Monitoramento e interpretação de dados para tomada de decisão.',
+    e7d: 'Criação de websites modernos, responsivos e centrados na conversão.',
+    e8d: 'Materiais visuais profissionais desenvolvidos para fortalecer a percepção da marca.',
+    e9d: 'Cobertura estratégica e produção de conteúdo em tempo real para eventos e ativações.',
+    e10d: 'Estruturação de estratégia personalizada com base em comportamento de mercado.',
+    pq_label: 'Para quem é a Branderino',
+    pq_h2: 'Marcas que querem deixar de ser opção',
+    pq_intro: 'Trabalhamos com empresas e profissionais de qualquer segmento que entendem que marketing sem estratégia é gasto, não investimento. Atendemos desde negócios locais até operações nacionais, em saúde, jurídico, financeiro, indústria, varejo, serviços, tecnologia, educação e B2B.',
+    pq_yes_label: 'É PARA VOCÊ SE', pq_no_label: 'NÃO É PARA VOCÊ SE',
+    pq_yes1: 'Sua marca já fatura, mas não tem posicionamento claro no mercado',
+    pq_yes2: 'Você investe em marketing, mas o retorno não acompanha o investimento',
+    pq_yes3: 'Sua presença digital existe, mas não converte em autoridade',
+    pq_yes4: 'Você quer um parceiro estratégico, não um fornecedor de tarefas',
+    pq_yes5: 'Sua marca precisa ser percebida como referência, não como mais uma',
+    pq_no1: 'Você busca a entrega mais barata do mercado',
+    pq_no2: 'Você quer apenas execução de tarefas sem questionamento estratégico',
+    pq_no3: 'Você espera resultado consolidado em 30 dias',
+    pq_no4: 'Você não tem disposição para construir marca no longo prazo',
+    pq_no5: 'Você acha que marketing é custo, não investimento',
+    wf_label: 'Como trabalhamos', wf_h2: 'Do comportamento à execução',
+    wf_modal_btn: 'Ver o método completo',
+    s1t: 'Diagnóstico Estratégico',
+    s1d: 'Mergulhamos na sua marca, no seu mercado e no comportamento do seu público. Mapeamos cenário atual, gargalos reais e oportunidades que ainda não foram exploradas.',
+    s2t: 'Plano de Ação Personalizado',
+    s2d: 'A partir do diagnóstico, construímos um plano estratégico que define exatamente onde atuar primeiro para gerar resultado mensurável.',
+    s3t: 'Planejamento Detalhado',
+    s3d: 'Antes de qualquer execução, estruturamos todo o planejamento operacional. Calendário, formatos, mensagens, gatilhos comportamentais por peça.',
+    s4t: 'Execução com Padrão',
+    s4d: 'Cada entrega é executada com rigor de qualidade, fundamentada na estratégia e alinhada à percepção de marca que estamos construindo.',
+    s5t: 'Acompanhamento e Iteração',
+    s5d: 'Marca é construção contínua. Acompanhamos resultado, ajustamos rota, refinamos mensagem. O método se adapta, o padrão se mantém.',
+    n1_title: 'Marcas posicionadas', n1_sub: 'Em saúde, jurídico, financeiro, varejo, indústria e serviços',
+    n2_title: 'Anos de experiência', n2_sub: 'Construindo metodologia própria desde o primeiro projeto',
+    n3_title: 'Projetos estratégicos', n3_sub: 'Branding, performance, automação e arquitetura digital',
+    diag_label: 'Antes de conversar com a gente',
+    diag_h2: 'Descubra em 4 minutos o que está travando sua marca',
+    diag_desc: 'Um diagnóstico estruturado de 14 perguntas que identifica o gargalo central da sua presença de mercado. Você recebe o relatório completo por email. Sem reunião, sem comercial em cima, sem cadastro genérico.',
+    diag_btn: 'Fazer o diagnóstico',
+    sch_label: 'Próximo passo',
+    sch_h2: 'Agende uma conversa de diagnóstico',
+    sch_desc: '30 minutos de conversa estratégica para entender se a Branderino é o caminho certo para sua marca. Sem custo, sem compromisso.',
+    ft_contact: 'Contato', ft_social: 'Redes Sociais', ft_copy: '© 2026 Assessoria Branderino. Todos os direitos reservados.',
+  },
+  en: {
+    hero_h1: 'Elevate your Brand',
+    hero_sub: 'Full-service marketing advisory with a proprietary method. Every strategic, creative and media decision starts from audience behavior analysis, not trend.',
+    hero_cta_primary: 'Get a free diagnosis',
+    hero_cta_secondary: 'Discover the method',
+    qs_label: 'Manifesto',
+    qs_imp1: 'The market does not need more brands.',
+    qs_imp2: 'It needs brands impossible to ignore.',
+    qs_prob1: 'Many companies invest in marketing.',
+    qs_prob2: 'Few build real authority.',
+    qs_vision1: 'Companies do not just need to appear.',
+    qs_vision2: 'They need to occupy space in people\'s minds.',
+    met_label: 'What sets us apart',
+    met_h2: 'Psychology before execution',
+    met_intro: 'Most agencies start with the art, the ad or the content calendar. Branderino starts with behavior. Before any delivery, we map the psychological triggers that drive the purchase decision of that brand\'s specific audience. Execution comes after, grounded in that analysis.',
+    p1_label: 'PILLAR 01', p1_title: 'Behavioral Analysis',
+    p1_desc: 'We map the audience\'s motivation, cognition and learning before any creative decision. Every message is built on an identified psychological trigger.',
+    p2_label: 'PILLAR 02', p2_title: 'Brand Architecture',
+    p2_desc: 'We define positioning, narrative, content pillars and visual architecture based on the brand\'s consumer behavior, not on generic market reference.',
+    p3_label: 'PILLAR 03', p3_title: 'Grounded Execution',
+    p3_desc: 'Creatives, ads, websites and materials come from strategy, not aesthetics. Each visual and copy decision originates from a testable behavioral hypothesis.',
+    p4_label: 'PILLAR 04', p4_title: 'Perception Measurement',
+    p4_desc: 'We track metrics that matter: conversion rate, lead quality, brand value perception. We do not sell follower vanity.',
+    esp_label: 'Specialties',
+    esp_h2: 'Everything your brand needs',
+    esp_sub: 'Every specialty goes through the same methodological foundation. What changes is the delivery channel, not the way of thinking about the problem.',
+    esp_cat1: 'STRATEGY', esp_cat2: 'CREATION', esp_cat3: 'PERFORMANCE',
+    e1t: 'Branding & Rebranding', e2t: 'Visual Identity', e3t: 'Ads Management', e4t: 'Automation',
+    e5t: 'Social Media', e6t: 'Metrics Analysis', e7t: 'Websites', e8t: 'Graphic Design',
+    e9t: 'Event Backstage', e10t: 'Branding & Rebranding', e10t_plan: 'Strategic Planning',
+    e1d: 'Brand building and repositioning based on value perception and authority.',
+    e2d: 'Development of authentic, strategic identities aligned with brand positioning.',
+    e3d: 'Paid traffic strategies focused on reach and conversion.',
+    e4d: 'Implementation of automated processes for efficiency and scale.',
+    e5d: 'Strategic management focused on positioning and digital authority.',
+    e6d: 'Data monitoring and interpretation for decision-making.',
+    e7d: 'Creation of modern, responsive websites centered on conversion.',
+    e8d: 'Professional visual materials developed to strengthen brand perception.',
+    e9d: 'Strategic coverage and real-time content production for events and activations.',
+    e10d: 'Structuring personalized strategy based on market behavior.',
+    pq_label: 'Who is Branderino for',
+    pq_h2: 'Brands that want to stop being an option',
+    pq_intro: 'We work with companies and professionals of any segment who understand that marketing without strategy is spending, not investment. We serve from local businesses to national operations, in health, legal, financial, industry, retail, services, technology, education and B2B.',
+    pq_yes_label: 'IT IS FOR YOU IF', pq_no_label: 'IT IS NOT FOR YOU IF',
+    pq_yes1: 'Your brand already generates revenue, but has no clear market positioning',
+    pq_yes2: 'You invest in marketing, but the return does not match the investment',
+    pq_yes3: 'Your digital presence exists, but does not convert into authority',
+    pq_yes4: 'You want a strategic partner, not a task supplier',
+    pq_yes5: 'Your brand needs to be perceived as a reference, not as just another option',
+    pq_no1: 'You are looking for the cheapest delivery in the market',
+    pq_no2: 'You want only task execution without strategic questioning',
+    pq_no3: 'You expect consolidated results in 30 days',
+    pq_no4: 'You are not willing to build a brand for the long term',
+    pq_no5: 'You think marketing is a cost, not an investment',
+    wf_label: 'How we work', wf_h2: 'From behavior to execution',
+    wf_modal_btn: 'View complete method',
+    s1t: 'Strategic Diagnosis',
+    s1d: 'We dive deep into your brand, your market and your audience\'s behavior. We map the current scenario, real bottlenecks and opportunities not yet explored.',
+    s2t: 'Personalized Action Plan',
+    s2d: 'From the diagnosis, we build a strategic plan that defines exactly where to act first to generate measurable results.',
+    s3t: 'Detailed Planning',
+    s3d: 'Before any execution, we structure the entire operational planning. Calendar, formats, messages, behavioral triggers per piece.',
+    s4t: 'Execution with Standard',
+    s4d: 'Each delivery is executed with quality rigor, grounded in strategy and aligned with the brand perception we are building.',
+    s5t: 'Follow-up and Iteration',
+    s5d: 'Brand is continuous construction. We track results, adjust direction, refine messaging. The method adapts, the standard holds.',
+    n1_title: 'Positioned brands', n1_sub: 'In health, legal, financial, retail, industry and services',
+    n2_title: 'Years of experience', n2_sub: 'Building proprietary methodology since the first project',
+    n3_title: 'Strategic projects', n3_sub: 'Branding, performance, automation and digital architecture',
+    diag_label: 'Before talking to us',
+    diag_h2: 'Discover in 4 minutes what is holding your brand back',
+    diag_desc: 'A structured 14-question diagnosis that identifies the central bottleneck of your market presence. You receive the full report by email. No meeting, no sales call, no generic registration.',
+    diag_btn: 'Take the diagnosis',
+    sch_label: 'Next step',
+    sch_h2: 'Schedule a diagnostic conversation',
+    sch_desc: '30 minutes of strategic conversation to understand if Branderino is the right path for your brand. No cost, no commitment.',
+    ft_contact: 'Contact', ft_social: 'Social Media', ft_copy: '© 2026 Assessoria Branderino. All rights reserved.',
+  }
+};
+
+/* ── Article Data ── */
+const ARTICLES = {
+  'arquétipos': `<h2>Arquétipos</h2><div class="article-content-text"><p>Existe uma razão pela qual a Nike não parece vender tênis, mas sim superação. Por que a Harley-Davidson não parece vender motos, mas sim rebeldia. Por que a Disney não vende parques, mas magia. Essas marcas não conversam com a parte racional de quem compra. Elas falam com camadas mais profundas e simbólicas da mente humana. O nome desse fenômeno é arquétipo.</p><p>A ideia vem do psiquiatra suíço Carl Gustav Jung, que propôs a existência de um inconsciente coletivo: uma camada psíquica compartilhada por toda a humanidade, povoada por figuras simbólicas que se repetem em mitos, religiões, contos e sonhos de todas as culturas. São personagens universais que reconhecemos imediatamente, mesmo sem nunca termos ouvido falar deles.</p><p>Décadas depois, as pesquisadoras Margaret Mark e Carol Pearson aplicaram essa teoria ao universo das marcas e organizaram 12 arquétipos centrais: Inocente, Sábio, Explorador, Fora-da-Lei, Mago, Herói, Amante, Bobo da Corte, Cara Comum, Cuidador, Governante e Criador. Cada um carrega um conjunto próprio de valores, medos, motivações e formas de se expressar no mundo.</p><p>Definir o arquétipo de uma marca é o passo zero de uma estratégia de comunicação sólida. Ele responde a perguntas que nenhum briefing comum alcança: se essa marca fosse uma pessoa, como ela falaria? O que ela defenderia? Do que ela ri? O que ela jamais faria?</p><p>A partir do arquétipo, todas as outras decisões ganham coerência. O tom de voz nas redes sociais, as cores e tipografias, os roteiros das campanhas, as escolhas de parcerias, a forma como o atendimento responde. Tudo passa a soar igual porque vem do mesmo lugar simbólico. O resultado é uma marca com personalidade clara, fácil de reconhecer e difícil de confundir com qualquer concorrente.</p></div>`,
+  disc: `<h2>DISC</h2><div class="article-content-text"><p>Imagine apresentar exatamente a mesma proposta para quatro pessoas diferentes e receber quatro reações completamente distintas. A primeira quer o resumo executivo em trinta segundos. A segunda quer saber quem mais já comprou. A terceira pergunta sobre garantia, suporte e segurança. A quarta pede a planilha com todos os dados. Isso não é coincidência nem mau humor de cliente. É DISC.</p><p>O DISC é uma metodologia comportamental criada pelo psicólogo William Moulton Marston em 1928. Ele observou que pessoas dentro da normalidade tendem a expressar quatro estilos comportamentais dominantes, que descrevem como cada um age, decide e se comunica. As iniciais formam o nome da metodologia: Dominância, Influência, Estabilidade e Conformidade.</p><p>Para uma marca, entender DISC tem impacto direto em três frentes. A primeira é a construção de personas: personas baseadas em DISC descrevem estilo decisório, o que muda completamente o tipo de mensagem e formato que vão converter. A segunda frente é o copywriting: o mesmo produto pode ser apresentado com argumentos diferentes para perfis diferentes, não porque a verdade muda, mas porque cada perfil dá valor a coisas diferentes. A terceira é o atendimento e a venda: um profissional treinado em DISC ajusta a abordagem em tempo real, lendo sinais comportamentais do cliente em vez de aplicar um script único.</p></div>`,
+  posicionamento: `<h2>Posicionamento</h2><div class="article-content-text"><p>A mente humana é um arquivo finito. Não cabem cinquenta marcas de tênis, trinta marcas de cerveja, cem agências de marketing. O consumidor médio guarda duas, três, no máximo sete marcas por categoria. A marca que não está nesse arquivo mental simplesmente não existe na hora da decisão de compra. Esse é o ponto central da disciplina de posicionamento.</p><p>O conceito foi consolidado em 1981 pelos publicitários Al Ries e Jack Trout, no livro Positioning: The Battle for Your Mind. A definição que eles propuseram virou clássica: posicionamento não é o que você faz com o produto, é o que você faz com a mente de quem pode comprar. É o lugar que sua marca ocupa na cabeça dele, idealmente em uma única palavra ou ideia.</p><p>Sem posicionamento claro, o marketing vira artesanato. Cada campanha é bonita por si, mas inconsistente em relação à anterior. O cliente recebe sinais contraditórios e nunca forma uma percepção firme da marca. Com posicionamento claro, todas as decisões ganham um filtro: cada novo conteúdo, campanha ou produto passa pela mesma pergunta. Isso reforça ou dilui o território mental que queremos ocupar?</p></div>`,
+  'comunicação': `<h2>Comunicação</h2><div class="article-content-text"><p>Existe uma frase atribuída ao dramaturgo George Bernard Shaw que resume meio século de teoria da comunicação: o maior problema da comunicação é a ilusão de que ela aconteceu. Aplicada ao marketing, essa frase explica por que tantas campanhas são bem produzidas, criativas e caras, e ainda assim não movem ponteiro algum.</p><p>O modelo clássico da comunicação descreve uma linha: emissor envia uma mensagem, por um canal, até um receptor, com ruídos atrapalhando no caminho. O modelo é útil para entender a engenharia básica, mas é insuficiente para o marketing, porque ignora dois fatores que mudam tudo. O primeiro é o repertório de quem recebe: o cliente decodifica a mensagem com base no que ele já sabe, sente e acredita, não com base na intenção de quem falou. O segundo é o contexto: a mesma mensagem em canais diferentes ativa significados completamente distintos.</p><p>Para que tudo isso funcione, a comunicação no marketing usa ferramentas específicas. Storytelling transforma informação em emoção, dando estrutura narrativa a cases e mensagens. Copywriting com estruturas como AIDA e PAS organiza o texto para conduzir a uma ação. A matriz de mensagem por funil reconhece que o cliente no topo precisa ser educado, o do meio precisa comparar e o do fundo precisa de prova e fechamento.</p></div>`,
+  neuromarketing: `<h2>Neuromarketing</h2><div class="article-content-text"><p>Em 2002, o psicólogo Daniel Kahneman recebeu o Prêmio Nobel de Economia provando algo que destruiu o paradigma do consumidor racional: a maior parte das nossas decisões é tomada por um sistema mental rápido, automático e emocional, e só depois racionalizamos como se tivéssemos pensado calmamente. Para o marketing, essa descoberta muda tudo.</p><p>Kahneman descreveu dois modos de pensar. O Sistema 1 é rápido, intuitivo, emocional, automático. O Sistema 2 é lento, lógico, analítico, e exige esforço mental. Praticamente toda decisão de compra de baixo envolvimento é resolvida no Sistema 1. E esse sistema não responde a planilhas. Responde a estímulos sensoriais, emoção, familiaridade e atalhos.</p><p>A partir dessas descobertas, o neuromarketing organizou um conjunto de aplicações práticas que hoje estão em toda boa estratégia de marca. Cores e formas operam nesse nível. Cores quentes como vermelho e laranja ativam urgência e apetite. Formas arredondadas geram acolhimento. Formas angulares geram percepção de tecnologia e autoridade. O marketing sensorial vai além: o cheiro característico de uma loja, a trilha sonora de uma marca, a textura de uma embalagem. Tudo desenhado para gerar memória afetiva e diferenciação que não passa pela palavra.</p></div>`,
+  branding: `<h2>Branding</h2><div class="article-content-text"><p>Produto se copia. Preço se iguala. Tecnologia se replica. Reputação, não. Branding é a disciplina de construir aquilo que o concorrente não consegue clonar.</p><p>A definição mais precisa é também a mais desconfortável: marca não é logo, não é cor, não é slogan. Esses são apenas ativos visíveis da marca. Marca é a soma das percepções que uma pessoa carrega sobre uma empresa, um produto ou um serviço.</p><p>Existe uma distinção importante dentro do branding: identidade não é o mesmo que imagem. Identidade é o que a marca quer ser. Imagem é o que o público de fato pensa que ela é. O trabalho de branding é encurtar a distância entre os dois.</p><p>Construir branding na prática envolve várias camadas que precisam conversar entre si. Há a fundação estratégica: propósito, visão, valores, posicionamento e arquétipo. Há a identidade verbal: nome, manifesto, tom de voz, vocabulário próprio e narrativa central. Há a identidade visual: logo, sistema de cores, tipografia, linguagem fotográfica e elementos gráficos de apoio. O erro mais comum é tratar branding como uma fase do projeto. Branding não termina. Toda peça de performance, todo anúncio, todo e-mail, todo atendimento constrói ou destrói memória de marca.</p></div>`,
+  psicologia: `<h2>Psicologia</h2><div class="article-content-text"><p>Toda decisão de marketing eficaz é, no fundo, uma decisão de psicologia aplicada. Entender como a mente humana funciona sob pressão, escassez, comparação e incerteza é o que separa a campanha que vende da campanha que só decora o feed.</p><p>O trabalho mais influente nessa área é do psicólogo americano Robert Cialdini, autor de As Armas da Persuasão. Cialdini descreveu princípios universais de influência: atalhos mentais que o cérebro humano usa para decidir rapidamente. Entre eles: reciprocidade, compromisso e coerência, prova social, autoridade, afeição, escassez e unidade.</p><p>Além dos princípios de Cialdini, outros conceitos psicológicos têm aplicação direta no marketing. A hierarquia de necessidades de Maslow ajuda a entender se sua categoria atende uma necessidade básica, de segurança, social, de estima ou de autorrealização. O viés de ancoragem mostra que o primeiro número que alguém vê contamina a percepção de todos os seguintes. O paradoxo da escolha mostra que oferecer opções demais reduz a conversão em vez de aumentá-la.</p><p>A linha entre persuasão e manipulação é fina, e é definida por uma única pergunta: o produto, no final, entrega o que prometeu? Persuasão é mover alguém em direção a algo que é bom para ele. Manipulação é movê-lo contra o próprio interesse.</p></div>`
+};
+
+/* ── Dados dos Projetos ── */
+const PROJECTS = {
+  loorto: {
+    title: 'Loorto Software',
+    category: 'Branding & Identidade Visual',
+    description: [
+      'Neste projeto, você pode acompanhar toda a parte visual, principalmente nas aplicações gráficas. Porém, trabalhamos também na parte estratégica, formulando não apenas a identidade da marca, mas todo o branding por trás dela.',
+      'O Loorto é um aplicativo cujo objetivo é otimizar o RH das empresas, permitindo rastrear a entrada e saída dos funcionários, gerar lembretes de aniversários, reuniões e eventos, armazenar arquivos e integrar com plataformas de oportunidades de emprego, facilitando a busca por novos colaboradores.',
+      'Sua comunicação é sofisticada, tecnológica e futurista, e no processo de criação visual, acreditamos ter conseguido transmitir essa experiência com precisão.'
+    ],
+    folder: 'BrandLoorto',
+    files: [
+      'BrandLoorto-01','BrandLoorto-03','BrandLoorto-04','BrandLoorto-05',
+      'BrandLoorto-06','BrandLoorto-07','BrandLoorto-08','BrandLoorto-09',
+      'BrandLoorto-10','BrandLoorto-11','BrandLoorto-12','BrandLoorto-13',
+      'BrandLoorto-14','BrandLoorto-15','BrandLoorto-16','BrandLoorto-17',
+      'BrandLoorto-18','BrandLoorto-19','BrandLoorto-20','BrandLoorto-21',
+      'BrandLoorto-22','BrandLoorto-23','BrandLoorto-24','BrandLoorto-25',
+      'BrandLoorto-26','BrandLoorto-27','BrandLoorto-29','BrandLoorto-30'
+    ]
+  },
+  axiona: {
+    title: 'Axiona Solutions',
+    category: 'Branding & Identidade Visual',
+    description: [
+      'Este projeto foi desenvolvido para posicionar do zero uma empresa de automação de processos. A seguir, você pode acompanhar toda a parte estratégica da marca, identidade visual e aplicações gráficas.'
+    ],
+    folder: 'brandbook-axiona',
+    files: Array.from({length: 61}, (_, i) => `brandbook-axiona-${String(i + 1).padStart(2, '0')}`)
+  },
+  falai: {
+    title: 'Fala AI',
+    category: 'Branding & Identidade Visual',
+    description: [
+      'O Fala AI nasceu com um propósito claro: transformar a forma como empresas se comunicam com seus clientes. Neste projeto, estruturamos do zero o posicionamento de uma solução de automação comercial com atendimento em voz por inteligência artificial, da estratégia de marca até as aplicações gráficas.'
+    ],
+    folder: 'brandbook-falai',
+    files: Array.from({length: 41}, (_, i) => `brandbook-falai-${String(i + 1).padStart(2, '0')}`)
+  },
+};
+
+/* ── Galeria de Projeto (Overlay) ── */
+window.openProjectModal = function(projectId) {
+  const modal = document.getElementById('projectModal');
+  const container = document.getElementById('projectImagesContainer');
+  const project = PROJECTS[projectId];
+  if (!project) return;
+
+  modal.scrollTop = 0;
+
+  document.getElementById('projectTitle').textContent = project.title;
+  document.getElementById('projectCategory').textContent = project.category;
+  document.getElementById('projectDesc').innerHTML = project.description
+    .map(p => `<p style="font-family:'Trirong',serif;font-weight:400;font-size:clamp(14px,1.3vw,17px);color:#A8A8A8;line-height:1.85;margin-bottom:20px;">${p}</p>`)
+    .join('');
+
+  container.innerHTML = '';
+  if (project.groups) {
+    project.groups.forEach(group => {
+      const section = document.createElement('div');
+      section.style.cssText = 'margin-bottom:56px;';
+
+      const heading = document.createElement('h3');
+      heading.style.cssText = 'font-family:"Open Sans",sans-serif;font-weight:700;font-size:18px;color:#f9f9f9;margin-bottom:20px;letter-spacing:-.01em;padding-bottom:14px;border-bottom:1px solid rgba(249,249,249,.08);';
+      heading.textContent = group.title;
+      section.appendChild(heading);
+
+      const grid = document.createElement('div');
+      grid.style.cssText = 'display:grid;grid-template-columns:repeat(3,1fr);gap:8px;';
+
+      group.files.forEach(filename => {
+        const img = document.createElement('img');
+        img.src = `Imagens/criativos-socialmedia/${encodeURIComponent(group.folder)}/${encodeURIComponent(filename)}.png`;
+        img.alt = `${group.title} | ${filename}`;
+        img.style.cssText = 'width:100%;aspect-ratio:1/1;object-fit:cover;display:block;opacity:0;transform:translateY(12px);transition:opacity .6s ease,transform .6s ease;';
+        img.onload = () => { img.style.opacity = '1'; img.style.transform = 'translateY(0)'; };
+        grid.appendChild(img);
+      });
+
+      section.appendChild(grid);
+      container.appendChild(section);
+    });
+  } else {
+    project.files.forEach(filename => {
+      const img = document.createElement('img');
+      img.src = `Imagens/portfolio-branding/${project.folder}/${filename}.png`;
+      img.alt = `${project.title} | ${filename}`;
+      img.style.cssText = 'width:100%;height:auto;display:block;margin-bottom:24px;border:1px solid rgba(249,249,249,.05);opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease;';
+      img.onload = () => { img.style.opacity = '1'; img.style.transform = 'translateY(0)'; };
+      container.appendChild(img);
+    });
+  }
+
+  modal.classList.remove('hidden');
+  gsap.to(modal, {opacity: 1, duration: 0.5, ease: 'power2.out'});
+  lenis.stop();
+};
+window.closeProjectModal = function() {
+  const modal = document.getElementById('projectModal');
+  gsap.to(modal, {opacity: 0, duration: 0.4, ease: 'power2.in', onComplete: () => {
+    modal.classList.add('hidden');
+    lenis.start();
+  }});
+};
+
+/* ── Mobile Sidebar Logic ── */
+window.toggleSidebar = function(open) {
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('sidebarOverlay');
+  if (open) {
+    sidebar.classList.add('active');
+    overlay.classList.add('active');
+    lenis.stop();
+  } else {
+    sidebar.classList.remove('active');
+    overlay.classList.remove('active');
+    lenis.start();
+  }
+};
+
+/* ── Word split ── */
+function splitAndReveal(el) {
+  const text = el.textContent.trim();
+  if (!text) return;
+  const words = text.split(/\s+/);
+  el.innerHTML = '';
+  words.forEach((word, i) => {
+    const sp = document.createElement('span');
+    sp.className = 'w-span';
+    sp.textContent = word;
+    sp.style.transitionDelay = (i * 0.038) + 's';
+    el.appendChild(sp);
+    if (i < words.length - 1) el.appendChild(document.createTextNode(' '));
+  });
+  const spans = el.querySelectorAll('.w-span');
+  const io = new IntersectionObserver(([entry]) => {
+    if (entry.isIntersecting) { spans.forEach(s => s.classList.add('shown')); io.disconnect(); }
+  }, {threshold: 0.15});
+  io.observe(el);
+}
+function setupWordSplits() {
+  document.querySelectorAll('[data-word-split]').forEach(el => splitAndReveal(el));
+}
+
+/* ── FAQ Toggle ── */
+window.toggleFaq = function(el) {
+  el.classList.toggle('active');
+};
+
+/* ── Header scroll ── */
+const mainHeader = document.getElementById('mainHeader');
+window.addEventListener('scroll', () => {
+  mainHeader.classList.toggle('scrolled', window.scrollY > 50);
+});
+
+/* ── Magnetic buttons ── */
+document.querySelectorAll('.btn-primary,.btn-secondary,.btn-outline,.hero-diag-btn').forEach(btn => {
+  btn.addEventListener('mousemove', e => {
+    const rect = btn.getBoundingClientRect(), x = e.clientX - rect.left - rect.width / 2, y = e.clientY - rect.top - rect.height / 2;
+    gsap.to(btn, {x: x * 0.28, y: y * 0.28, duration: 0.4, ease: 'power2.out'});
+  });
+  btn.addEventListener('mouseleave', () => gsap.to(btn, {x: 0, y: 0, duration: 0.6, ease: 'elastic.out(1,0.3)'}));
+});
+
+/* ── Manifesto cinematic animations ── */
+gsap.registerPlugin(ScrollTrigger);
+
+/* ── General scroll reveals ── */
+gsap.to('#heroBottomLeft', {opacity: 1, y: 0, duration: 1.4, delay: .22, ease: 'power3.out'});
+gsap.to('#heroMiddleRight', {opacity: 1, x: 0, duration: 1.4, delay: .45, ease: 'power3.out'});
+gsap.utils.toArray('.reveal').forEach((el, i) => {
+  gsap.to(el, {opacity: 1, y: 0, duration: .82, ease: 'power3.out', delay: (i % 3) * .06,
+    scrollTrigger: {trigger: el, start: 'top 87%', toggleActions: 'play none none none'}});
+});
+document.querySelectorAll('.num-block').forEach((el, i) => {
+  gsap.to(el, {opacity: 1, y: 0, duration: .8, ease: 'power3.out', delay: i * .1,
+    scrollTrigger: {trigger: el, start: 'top 85%', toggleActions: 'play none none none'}});
+});
+
+/* ── Counters ── */
+document.querySelectorAll('.counter').forEach(el => {
+  const io = new IntersectionObserver(([e]) => {
+    if (!e.isIntersecting || el._done) return; el._done = true;
+    const target = +el.dataset.target, step = target / (1800 / 16); let v = 0;
+    const tv = setInterval(() => { v = Math.min(v + step, target); el.textContent = Math.floor(v); if (v >= target) clearInterval(tv); }, 16);
+  }, {threshold: .5});
+  io.observe(el);
+});
+
+/* ── Init ── */
+setupWordSplits();
+
+})();
+</script>
+</body>
+</html>
